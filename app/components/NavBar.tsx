@@ -8,7 +8,7 @@ const navigation = [
   { name: 'Recent Works', href: 'https://gallery.kevinsutandi.com/' },
 ];
 
-export default function HeaderBar() {
+export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <header className='absolute inset-x-0 top-0 z-50 p-4'>
