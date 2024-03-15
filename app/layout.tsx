@@ -1,11 +1,8 @@
 import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google';
 import './globals.css';
 
-// const montserrat = Montserrat({ subsets: ['latin'] });
-
 export const metadata: Metadata = {
-  title: 'Kevin Sutadi',
+  title: 'Kevin Sutandi',
   description: 'Kevin Sutandi Photography Portfolio',
 };
 

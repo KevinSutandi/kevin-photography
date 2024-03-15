@@ -2,7 +2,7 @@
 
 import { Dialog } from '@headlessui/react';
 import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const navigation = [
   { name: 'Recent Works', href: 'https://gallery.kevinsutandi.com/' },
@@ -10,10 +10,47 @@ const navigation = [
 
 export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isTop, setIsTop] = useState(true);
+
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (typeof window !== 'undefined') {
+        // Check if the page is scrolled beyond the top
+        const atTop = window.scrollY < 50;
+
+        setIsTop(atTop);
+
+        // Hide navbar on scroll down, show on scroll up
+        if (window.scrollY > lastScrollY) {
+          // if scroll down
+          setVisible(false);
+        } else {
+          // if scroll up
+          setVisible(true);
+        }
+
+        setLastScrollY(window.scrollY);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', controlNavbar);
+
+      return () => {
+        window.removeEventListener('scroll', controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
   return (
-    <header className='absolute inset-x-0 top-0 z-50 p-4'>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 p-3 transition-transform duration-300 ${
+        !visible && '-translate-y-full'
+      } ${!isTop && 'bg-black'} duration-300 transition-all`}
+    >
       <nav
-        className='flex items-center justify-between p-6 md:px-8'
+        className='flex items-center justify-between p-6 md:px-8 '
         aria-label='Global'
       >
         <div className='flex md:flex-1'>
