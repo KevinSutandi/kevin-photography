@@ -21,6 +21,9 @@ export default function Home() {
         photoArray={graduationImages}
         prefix='GraduationHomePage/'
       />
+      <footer className='bg-gray-500 text-white text-center p-4 w-full h-16'>
+        <p>&copy; 2024 - All rights reserved</p>
+      </footer>
     </>
   );
 }

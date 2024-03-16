@@ -21,7 +21,7 @@ const WeddingGallery: React.FC<GalleryProps> = ({
   });
 
   return (
-    <div className='bg-white min-h-screen h-full w-full pt-16 p-8 md:p-20'>
+    <div className='bg-white w-full pt-16 p-8 md:p-20'>
       <h1 className='text-4xl text-black text-center font-normal mb-10'>
         Most Recent Works - {placeholder}
       </h1>
@@ -29,7 +29,7 @@ const WeddingGallery: React.FC<GalleryProps> = ({
         layout='rows'
         photos={photos}
         renderPhoto={NextJsImage}
-        defaultContainerWidth={2000}
+        defaultContainerWidth={1200}
         sizes={{
           size: 'calc(100vw - 40px)',
           sizes: [
