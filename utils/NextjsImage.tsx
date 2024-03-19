@@ -11,9 +11,9 @@ export default function NextJsImage({
       <Image
         fill
         src={photo}
-        loading='lazy'
         quality={30}
-        placeholder={'blurDataURL' in photo ? 'blur' : undefined}
+        placeholder='blur'
+        priority
         {...{ alt, title, sizes, className, onClick }}
       />
     </div>
